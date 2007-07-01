@@ -1,25 +1,22 @@
 Name:           libglade-java
 Version:        2.12.8
-Release:        %mkrel 1
+Release:        %mkrel 2
 Epoch:          0
 Summary:        Java bindings for libglade
 License:        LGPL
-Group:          Development/Java
+Group:          System/Libraries
 URL:            http://java-gnome.sourceforge.net/
 Source0:        http://fr2.rpmfind.net/linux/gnome.org/sources/libglade-java/2.12/libglade-java-%{version}.tar.bz2
 Source1:        http://fr2.rpmfind.net/linux/gnome.org/sources/libglade-java/2.12/libglade-java-%{version}.changes
 Source2:        http://fr2.rpmfind.net/linux/gnome.org/sources/libglade-java/2.12/libglade-java-%{version}.md5sum
 Source3:        http://fr2.rpmfind.net/linux/gnome.org/sources/libglade-java/2.12/libglade-java-%{version}.news
 Source4:        java-gnome-macros.tar.bz2        
-Requires:       libglade2.0
-Requires:       libgnome-java
-Requires:       libgtk-java
-BuildRequires:  gcc-java >= 0:4.1.1
+BuildRequires:  java-gcj-compat-devel
 BuildRequires:  java-devel >= 0:1.4.2
 BuildRequires:  jpackage-utils
 BuildRequires:  libglade2.0-devel
-BuildRequires:  libgnome-java >= 0:2.12.7
-BuildRequires:  libgtk-java >= 0:2.10.2
+BuildRequires:  libgnome-java-devel >= 0:2.12.7
+BuildRequires:  libgtk-java-devel >= 0:2.10.2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
@@ -27,13 +24,13 @@ libglade-java is a language binding that allows developers to write
 Java applications that use libglade.  It is part of Java-GNOME.
 
 %package        devel
-Summary:        Compressed Java source files for %{name}
+Summary:        Development files for %{name}
 Group:          Development/Java
 Requires:       %{name} = %{epoch}:%{version}-%{release}
+Conflicts:      libglade-java < 2.12.8-2
 
 %description    devel
-Compressed Java source for %{name}. This is useful if you are developing
-applications with IDEs like Eclipse.
+Development files for %{name}.
 
 %prep
 %setup -q
@@ -49,6 +46,8 @@ export JAVA=%{java}
 export JAVAC=%{javac}
 export JAR=%{jar}
 export JAVADOC=%{javadoc}
+export GCJ=%{gcj}
+export CPPFLAGS="-I%{java_home}/include -I%{java_home}/include/linux"
 %{configure2_5x} --with-jardir=%{_javadir}
 %{make}
 
@@ -82,14 +81,16 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc doc/api AUTHORS COPYING NEWS README
-%{_libdir}/*so*
-%{_libdir}/*la
-%{_libdir}/pkgconfig/*
+%doc AUTHORS COPYING NEWS README
+%{_libdir}/libgladejava-*.so
+%{_libdir}/libgladejni-*.so
 %{_javadir}/*.jar
 
 %files devel
 %defattr(-,root,root)
+%doc doc/api
 %{_javadir}/*.zip
-
-
+%{_libdir}/*la
+%{_libdir}/pkgconfig/*
+%{_libdir}/libgladejava.so
+%{_libdir}/libgladejni.so
