@@ -1,6 +1,6 @@
 Name:           libglade-java
 Version:        2.12.8
-Release:        %mkrel 2
+Release:        %mkrel 3
 Epoch:          0
 Summary:        Java bindings for libglade
 License:        LGPL
@@ -13,7 +13,7 @@ Source3:        http://fr2.rpmfind.net/linux/gnome.org/sources/libglade-java/2.1
 Source4:        java-gnome-macros.tar.bz2        
 BuildRequires:  java-gcj-compat-devel
 BuildRequires:  java-devel >= 0:1.4.2
-BuildRequires:  jpackage-utils
+BuildRequires:  java-rpmbuild
 BuildRequires:  libglade2.0-devel
 BuildRequires:  libgnome-java-devel >= 0:2.12.7
 BuildRequires:  libgtk-java-devel >= 0:2.10.2
