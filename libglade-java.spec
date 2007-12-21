@@ -17,6 +17,7 @@ BuildRequires:  java-rpmbuild
 BuildRequires:  libglade2.0-devel
 BuildRequires:  libgnome-java-devel >= 0:2.12.7
 BuildRequires:  libgtk-java-devel >= 0:2.10.2
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 libglade-java is a language binding that allows developers to write
