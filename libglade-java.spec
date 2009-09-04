@@ -1,6 +1,6 @@
 Name:           libglade-java
 Version:        2.12.8
-Release:        %mkrel 5
+Release:        %mkrel 6
 Epoch:          0
 Summary:        Java bindings for libglade
 License:        LGPL
