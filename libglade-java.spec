@@ -91,7 +91,7 @@ rm -rf %{buildroot}
 
 %files devel
 %defattr(-,root,root)
-%doc doc/api
+%doc %{_docdir}/%{name}-%{version}
 %{_javadir}/*.zip
 %{_libdir}/*la
 %{_libdir}/pkgconfig/*
