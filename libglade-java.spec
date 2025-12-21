@@ -11,6 +11,7 @@ Source1:        http://fr2.rpmfind.net/linux/gnome.org/sources/libglade-java/2.1
 Source2:        http://fr2.rpmfind.net/linux/gnome.org/sources/libglade-java/2.12/libglade-java-%{version}.md5sum
 Source3:        http://fr2.rpmfind.net/linux/gnome.org/sources/libglade-java/2.12/libglade-java-%{version}.news
 Source4:        java-gnome-macros.tar.bz2        
+BuildRequires:	make
 BuildRequires:  java-gcj-compat-devel
 BuildRequires:  java-devel >= 0:1.4.2
 BuildRequires:  java-rpmbuild
